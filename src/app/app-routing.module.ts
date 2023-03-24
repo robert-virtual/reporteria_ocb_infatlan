@@ -1,7 +1,10 @@
-import {NgModule} from '@angular/core';
+import {inject, NgModule} from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
 import {LoginComponent} from "./login/login.component";
 import {HomeComponent} from "./home/home.component";
+import {LoginService} from "./login/login.service";
+import {Page1Component} from "./page1/page1.component";
+import {Page2Component} from "./page2/page2.component";
 
 
 const routes: Routes = [
@@ -11,7 +14,20 @@ const routes: Routes = [
   },
   {
     path: "home",
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [() => inject(LoginService).canActivate()],
+    children: [
+      {
+        path: "page1",
+        component: Page1Component,
+        canActivate: [() => inject(LoginService).canActivate()],
+      },
+      {
+        path: "page2",
+        component: Page2Component,
+        canActivate: [() => inject(LoginService).canActivate()],
+      }
+    ]
   },
   {
     path: "",

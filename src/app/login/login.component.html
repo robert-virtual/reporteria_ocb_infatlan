@@ -6,23 +6,23 @@
     <mat-form-field class="full-width" appearance="outline">
       <mat-label>Email</mat-label>
       <input formControlName="email" required matInput placeholder="Ex. roberto@gmail.com" type="email">
-        <mat-error *ngIf="email.errors?.['email'] && !email.errors?.['required']"
-        >Invalid email address
-        </mat-error>
-        <mat-error *ngIf="email.errors?.['required']">Email is <strong>required</strong></mat-error>
+      <mat-error *ngIf="email.errors?.['email'] && !email.errors?.['required']"
+      >Invalid email address
+      </mat-error>
+      <mat-error *ngIf="email.errors?.['required']">Email is <strong>required</strong></mat-error>
     </mat-form-field>
 
     <mat-form-field class="full-width" appearance="outline">
       <mat-label>Password</mat-label>
       <input formControlName="password" matInput placeholder="Type your password" [type]="hidePass?'password':'text'">
 
-        <mat-error *ngIf="password.errors?.['required']">
-          Password is <strong>required</strong>
-        </mat-error>
+      <mat-error *ngIf="password.errors?.['required']">
+        Password is <strong>required</strong>
+      </mat-error>
       <button matSuffix mat-icon-button aria-label="show-hide-password" (click)="hidePass=!hidePass">
         <mat-icon>{{hidePass ? 'visibility' : 'visibility_off'}}</mat-icon>
       </button>
     </mat-form-field>
-    <button [disabled]="!loginForm.valid" mat-raised-button color="primary">Login</button>
+    <button class="mt-10" [disabled]="!loginForm.valid" mat-raised-button color="primary">Login</button>
   </form>
 </div>
