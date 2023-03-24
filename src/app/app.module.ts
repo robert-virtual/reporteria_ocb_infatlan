@@ -19,6 +19,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import { Page1Component } from './page1/page1.component';
 import { Page2Component } from './page2/page2.component';
 import {MatListModule} from "@angular/material/list";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
@@ -28,22 +29,23 @@ import {MatListModule} from "@angular/material/list";
     Page1Component,
     Page2Component
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    MatInputModule,
-    MatButtonModule,
-    MatIconModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    MatSidenavModule,
-    MatCheckboxModule,
-    FormsModule,
-    MatSnackBarModule,
-    MatToolbarModule,
-    MatListModule
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        MatInputModule,
+        MatButtonModule,
+        MatIconModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        MatSidenavModule,
+        MatCheckboxModule,
+        FormsModule,
+        MatSnackBarModule,
+        MatToolbarModule,
+        MatListModule,
+        MatProgressSpinnerModule
+    ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
   ],

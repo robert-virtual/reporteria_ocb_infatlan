@@ -18,14 +18,17 @@ const routes: Routes = [
     canActivate: [() => inject(LoginService).canActivate()],
     children: [
       {
+        path: "",
+        pathMatch:'full',
+        redirectTo:"page1"
+      },
+      {
         path: "page1",
         component: Page1Component,
-        canActivate: [() => inject(LoginService).canActivate()],
       },
       {
         path: "page2",
         component: Page2Component,
-        canActivate: [() => inject(LoginService).canActivate()],
       }
     ]
   },

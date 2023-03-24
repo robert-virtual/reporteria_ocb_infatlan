@@ -1,40 +1,34 @@
+<div class="container" >
 
-<mat-toolbar>
-  <button (click)="drawer.toggle()" mat-icon-button class="example-icon"
-          aria-label="Example icon-button with menu icon">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>Reporting</span>
-  <span class="spacer"></span>
-  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-    <mat-icon>favorite</mat-icon>
-  </button>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-    <mat-icon>share</mat-icon>
-  </button>
-</mat-toolbar>
-<mat-drawer-container class="container" autosize>
-  <mat-drawer #drawer class="sidenav"
-              mode="side">
-    <mat-list>
-      <mat-list-item>
-        <a routerLink="/home">home</a>
-      </mat-list-item>
-      <mat-list-item>
-        <a routerLink="page1">Page 1</a>
-      </mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item>
-        <a routerLink="page2">Page 2</a>
-      </mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item>Item 3</mat-list-item>
-    </mat-list>
+  <mat-toolbar class="toolbar">
+    <button (click)="drawer.toggle()" mat-icon-button class="icon"
+            aria-label=" icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Reporting</span>
+    <span class="spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <mat-icon>share</mat-icon>
+    </button>
+  </mat-toolbar>
+  <mat-sidenav-container class="sidenav-container" >
+    <mat-sidenav #drawer class="sidenav"
+                mode="side" >
+      <mat-nav-list>
+        <a mat-list-item routerLink="/home">home</a>
+        <mat-divider></mat-divider>
+        <a mat-list-item routerLink="page2">Page 2</a>
+        <mat-divider></mat-divider>
+      </mat-nav-list>
 
 
-  </mat-drawer>
+    </mat-sidenav>
 
-  <mat-drawer-content class="sidenav-content">
-    <router-outlet ></router-outlet>
-  </mat-drawer-content>
-</mat-drawer-container>
+    <mat-sidenav-content class="sidenav-content">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

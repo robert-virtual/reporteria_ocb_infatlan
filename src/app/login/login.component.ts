@@ -19,7 +19,7 @@ export class LoginComponent {
     private _snackBar: MatSnackBar
   ) {
   }
-
+  loading = false
   snackBar(message: string, action?: string) {
     this._snackBar.open(message, action)
   }
@@ -40,7 +40,9 @@ export class LoginComponent {
 
   login() {
     console.log("request send")
+    this.loading = true
     this.loginService.login(this.loginForm.value as LoginBody).pipe(catchError((err: HttpErrorResponse) => {
+      this.loading = false
       if (err.status >= 400 && err.status < 500) {
         this.snackBar("Bad Credentials")
 

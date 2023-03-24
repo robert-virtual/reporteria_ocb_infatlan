@@ -23,6 +23,15 @@
         <mat-icon>{{hidePass ? 'visibility' : 'visibility_off'}}</mat-icon>
       </button>
     </mat-form-field>
-    <button class="mt-10" [disabled]="!loginForm.valid" mat-raised-button color="primary">Login</button>
+    <button class="mt-10" [disabled]="!loginForm.valid || loading" mat-raised-button color="primary">
+      <mat-icon *ngIf="!loading">
+        check
+      </mat-icon>
+      <mat-icon *ngIf="loading">
+        <mat-spinner diameter="19">
+        </mat-spinner>
+      </mat-icon>
+      <span>Login</span>
+    </button>
   </form>
 </div>
