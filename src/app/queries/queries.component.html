@@ -1,0 +1,26 @@
+<mat-list>
+  <h2 style="margin-left: 10px" [matBadge]="queries?.length" matBadgeOverlap="false">Queries</h2>
+  <mat-chip-option (selectionChange)="setStatuses($event.selected?'authorized':undefined)" mat-subheader>authorized
+  </mat-chip-option>
+  <mat-chip-option (selectionChange)="setStatuses($event.selected?'requested':undefined)" mat-subheader>requested
+  </mat-chip-option>
+  <mat-list-item *ngFor="let query of queries">
+    <mat-icon matListItemIcon>folder</mat-icon>
+    <div matListItemTitle>Requested by {{query.requestedBy.name}} at {{query.requestedAt | date}}
+    </div>
+    <div matListItemLine>{{query.action.name}} {{query.table.name}} {{query.parameters}}
+    </div>
+    <div matListItemLine>{{query.status}}
+    </div>
+    <div matListItemLine>
+    </div>
+
+  </mat-list-item>
+
+</mat-list>
+<mat-paginator [length]="100"
+               [pageSize]="10"
+               [pageSizeOptions]="[5, 10, 25, 100]"
+               (page)="page($event)"
+               aria-label="Select page">
+</mat-paginator>

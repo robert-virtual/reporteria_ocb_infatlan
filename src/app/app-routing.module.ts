@@ -3,8 +3,8 @@ import {RouterModule, Routes} from "@angular/router";
 import {LoginComponent} from "./login/login.component";
 import {HomeComponent} from "./home/home.component";
 import {LoginService} from "./login/login.service";
-import {Page1Component} from "./page1/page1.component";
-import {Page2Component} from "./page2/page2.component";
+import {DashboardComponent} from "./dashboard/dashboard.component";
+import {QueriesComponent} from "./queries/queries.component";
 
 
 const routes: Routes = [
@@ -20,15 +20,15 @@ const routes: Routes = [
       {
         path: "",
         pathMatch:'full',
-        redirectTo:"page1"
+        redirectTo:"dashboard"
       },
       {
-        path: "page1",
-        component: Page1Component,
+        path: "dashboard",
+        component: DashboardComponent,
       },
       {
-        path: "page2",
-        component: Page2Component,
+        path: "queries",
+        component: QueriesComponent,
       }
     ]
   },

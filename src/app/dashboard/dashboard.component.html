@@ -1,0 +1,16 @@
+<h2>Modules</h2>
+<mat-grid-list [cols]="modules.length" rowHeight="2:1">
+
+  <mat-grid-tile *ngFor="let module of modules">
+  <mat-expansion-panel hideToggle >
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <span>{{module.name}}</span>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <a mat-list-item [routerLink]="'/home'+screen.link" *ngFor="let screen of module.screens">{{screen.name}}</a>
+  </mat-expansion-panel>
+
+  </mat-grid-tile>
+</mat-grid-list>

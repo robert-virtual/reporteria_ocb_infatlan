@@ -11,27 +11,29 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {AuthInterceptor} from "./auth.interceptor";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatToolbarModule} from "@angular/material/toolbar";
-import { Page1Component } from './page1/page1.component';
-import { Page2Component } from './page2/page2.component';
 import {MatListModule} from "@angular/material/list";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatExpansionModule} from "@angular/material/expansion";
 import { QueriesComponent } from './queries/queries.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import {MatGridListModule} from "@angular/material/grid-list";
+import {MatChipsModule} from "@angular/material/chips";
+import {MatBadgeModule} from "@angular/material/badge";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    Page1Component,
-    Page2Component,
-    QueriesComponent
+    QueriesComponent,
+    DashboardComponent
   ],
     imports: [
         BrowserModule,
@@ -50,7 +52,11 @@ import { QueriesComponent } from './queries/queries.component';
         MatListModule,
         MatProgressSpinnerModule,
         MatMenuModule,
-        MatExpansionModule
+        MatExpansionModule,
+        MatGridListModule,
+        MatChipsModule,
+        MatBadgeModule,
+        MatPaginatorModule
     ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
