@@ -20,6 +20,9 @@ import { Page1Component } from './page1/page1.component';
 import { Page2Component } from './page2/page2.component';
 import {MatListModule} from "@angular/material/list";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatMenuModule} from "@angular/material/menu";
+import {MatExpansionModule} from "@angular/material/expansion";
+import { QueriesComponent } from './queries/queries.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,8 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
     LoginComponent,
     HomeComponent,
     Page1Component,
-    Page2Component
+    Page2Component,
+    QueriesComponent
   ],
     imports: [
         BrowserModule,
@@ -44,7 +48,9 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
         MatSnackBarModule,
         MatToolbarModule,
         MatListModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        MatMenuModule,
+        MatExpansionModule
     ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},

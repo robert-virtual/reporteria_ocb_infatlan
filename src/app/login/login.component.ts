@@ -16,12 +16,12 @@ export class LoginComponent {
     private fb: FormBuilder,
     private loginService: LoginService,
     private router: Router,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
   ) {
   }
   loading = false
   snackBar(message: string, action?: string) {
-    this._snackBar.open(message, action)
+    this._snackBar.open(message, action,{duration:3000})
   }
 
   loginForm = this.fb.group({
@@ -54,7 +54,6 @@ export class LoginComponent {
       return throwError(() => err)
     })).subscribe(({data, error}) => {
       if (data) {
-        sessionStorage.setItem("token", data.token)
         this.router.navigate(["home"])
       }
     })
