@@ -1,0 +1,24 @@
+<div class="container">
+
+  <h2>Create Query</h2>
+  <span style="font-size: 20px">Table {{table?.name}}</span>
+  <button mat-button [matMenuTriggerFor]="tableMenu">
+    <mat-icon aria-hidden="false" aria-label="dropdown icon" fontIcon="arrow_drop_down"></mat-icon>
+  </button>
+  <mat-menu #tableMenu="matMenu">
+    <ng-template matMenuContent>
+      <button *ngFor="let table of tables" (click)="setTable(table)" mat-menu-item>{{table.name}}</button>
+    </ng-template>
+  </mat-menu>
+  <span style="font-size: 20px">Action {{action?.name}}</span>
+  <button mat-button [matMenuTriggerFor]="actionMenu">
+    <mat-icon aria-hidden="false" aria-label="dropdown icon" fontIcon="arrow_drop_down"></mat-icon>
+  </button>
+  <mat-menu #actionMenu="matMenu">
+    <ng-template matMenuContent>
+      <button *ngFor="let action of table?.actions" (click)="setAction(action)" mat-menu-item>{{action.name}}</button>
+    </ng-template>
+  </mat-menu>
+  <div *ngIf="action.name"></div>
+
+</div>
