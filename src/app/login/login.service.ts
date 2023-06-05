@@ -22,6 +22,7 @@ export interface Module {
 }
 
 export interface IApp {
+  id: number
   name: string
 }
 
@@ -57,7 +58,7 @@ export class LoginService {
 
   constructor(private http: HttpClient, private router: Router) {
     this.user = JSON.parse(sessionStorage.getItem("user") || "{}")
-    this.currentApp = this.user.apps[0]
+    this.currentApp = this.user.apps ? this.user.apps[0] : undefined
   }
 
   setCurrentApp(app: IApp) {

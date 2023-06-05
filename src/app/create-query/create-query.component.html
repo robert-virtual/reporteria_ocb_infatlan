@@ -1,5 +1,5 @@
 <div class="container">
-
+  
   <h2>Create Query</h2>
   <span style="font-size: 20px">Table {{table?.name}}</span>
   <button mat-button [matMenuTriggerFor]="tableMenu">
@@ -19,6 +19,61 @@
       <button *ngFor="let action of table?.actions" (click)="setAction(action)" mat-menu-item>{{action.name}}</button>
     </ng-template>
   </mat-menu>
-  <div *ngIf="action.name"></div>
+  <div *ngIf="action?.name != 'delete'">
+    <h2>Fields</h2>
+
+    <form class="form" [formGroup]="queryForm" (ngSubmit)="createQuery()">
+      <ng-container *ngFor="let field of table?.fields">
+        <br/>
+        <mat-form-field *ngIf="['text','email'].includes(field.type)" class="full-width" appearance="outline">
+          <mat-label>{{field.name}}</mat-label>
+          <input [formControlName]="field.name" matInput placeholder="Type here..." [type]="field.type">
+        </mat-form-field>
+        <mat-checkbox *ngIf="field.type == 'radio'" class="example-margin">{{field.name}}</mat-checkbox>
+
+        <mat-form-field *ngIf="field.type == 'date'" appearance="fill">
+          <mat-label>{{field.name}}</mat-label>
+          <input matInput [matDatepicker]="picker">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </ng-container>
+    </form>
+  </div>
+  <h2>Where</h2>
+
+
+  <div class="d-block" *ngFor="let condition of conditions">
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Field</mat-label>
+      <input matInput placeholder="Type here..." type="text">
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Value</mat-label>
+      <input matInput placeholder="Type here..." type="text">
+    </mat-form-field>
+    <button *ngIf="conditions.length != 1" (click)="removeCondition(condition)" mat-icon-button color="primary"
+            aria-label="icon button with a add icon">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <button (click)="addCondition()" mat-flat-button color="primary" aria-label="icon button with a add icon">
+    Add field
+  </button>
+  <br/>
+  <ng-container *ngIf="conditions.length > 1">
+    <span style="font-size: 20px">Operator {{operator}}</span>
+    <button mat-button [matMenuTriggerFor]="operatorMenu">
+      <mat-icon aria-hidden="false" aria-label="dropdown icon" fontIcon="arrow_drop_down"></mat-icon>
+    </button>
+    <mat-menu #operatorMenu="matMenu">
+      <ng-template matMenuContent>
+        <button (click)="setOperator('and')" mat-menu-item>and</button>
+        <button (click)="setOperator('or')" mat-menu-item>or</button>
+      </ng-template>
+    </mat-menu>
+
+  </ng-container>
 
 </div>

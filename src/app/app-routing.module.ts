@@ -1,52 +1,51 @@
-import {inject, NgModule} from '@angular/core';
-import {RouterModule, Routes} from "@angular/router";
-import {LoginComponent} from "./login/login.component";
-import {HomeComponent} from "./home/home.component";
-import {LoginService} from "./login/login.service";
-import {DashboardComponent} from "./dashboard/dashboard.component";
-import {QueriesComponent} from "./queries/queries.component";
-
+import { inject, NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+import { LoginService } from './login/login.service';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { QueriesComponent } from './queries/queries.component';
+import { CreateQueryComponent } from './create-query/create-query.component';
 
 const routes: Routes = [
   {
-    path: "login",
-    component: LoginComponent
+    path: 'login',
+    component: LoginComponent,
   },
   {
-    path: "home",
+    path: 'home',
     component: HomeComponent,
     canActivate: [() => inject(LoginService).canActivate()],
     children: [
       {
-        path: "",
-        pathMatch:'full',
-        redirectTo:"dashboard"
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'dashboard',
       },
       {
-        path: "dashboard",
+        path: 'dashboard',
         component: DashboardComponent,
       },
       {
-        path: "queries",
+        path: 'queries',
         component: QueriesComponent,
-      }
-    ]
+      },
+      {
+        path: 'queries-create',
+        component: CreateQueryComponent,
+      },
+    ],
   },
   {
-    path: "",
-    pathMatch: "full",
-    redirectTo: sessionStorage.getItem("token") != null ? "/home" : "/login"
-  }
-]
+    path: '',
+    pathMatch: 'full',
+    redirectTo: sessionStorage.getItem('token') != null ? '/home' : '/login',
+  },
+];
 
 @NgModule({
   declarations: [],
-  imports: [
-    RouterModule.forRoot(routes)
-  ],
-  exports: [
-    RouterModule
-  ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}

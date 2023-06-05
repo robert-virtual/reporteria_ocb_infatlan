@@ -1,36 +1,48 @@
 <div class="container">
-
   <mat-toolbar class="toolbar">
-    <button (click)="drawer.toggle()" mat-icon-button class="icon"
-            aria-label=" icon-button with menu icon">
+    <button
+      (click)="drawer.toggle()"
+      mat-icon-button
+      class="icon"
+      aria-label=" icon-button with menu icon"
+    >
       <mat-icon>menu</mat-icon>
     </button>
-    <span>Queries de Mantenimiento ({{currentApp?.name}})</span>
-    <button mat-icon-button [matMenuTriggerFor]="appsMenu" >
-      <mat-icon aria-hidden="false" aria-label="dropdown icon" fontIcon="arrow_drop_down"></mat-icon>
+    <span>Queries de Mantenimiento ({{ currentApp?.name }})</span>
+    <button mat-icon-button [matMenuTriggerFor]="appsMenu">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="dropdown icon"
+        fontIcon="arrow_drop_down"
+      ></mat-icon>
     </button>
     <mat-menu #appsMenu="matMenu">
-      <ng-template *ngFor="let app of user.apps" matMenuContent >
-        <button (click)="setCurrentApp(app)" mat-menu-item>{{app.name}}</button>
+      <ng-template *ngFor="let app of user.apps" matMenuContent>
+        <button (click)="setCurrentApp(app)" mat-menu-item>
+          {{ app.name }}
+        </button>
       </ng-template>
     </mat-menu>
     <span class="spacer"></span>
-    <span>{{user.name}}</span>
+    <span>{{ user.name }}</span>
 
     <mat-menu #appMenu="matMenu">
       <ng-template matMenuContent let-name="name">
-        <button (click)="logOut()" mat-menu-item>Log out {{name}}</button>
+        <button (click)="logOut()" mat-menu-item>Log out {{ name }}</button>
       </ng-template>
     </mat-menu>
 
-    <button mat-icon-button [matMenuTriggerFor]="appMenu" [matMenuTriggerData]="{name:user.name}">
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="appMenu"
+      [matMenuTriggerData]="{ name: user.name }"
+    >
       <mat-icon>more_vert</mat-icon>
     </button>
-
   </mat-toolbar>
+
   <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav #drawer class="sidenav"
-                 mode="side">
+    <mat-sidenav #drawer class="sidenav" mode="side">
       <mat-nav-list>
         <mat-accordion>
           <mat-expansion-panel hideToggle>
@@ -43,16 +55,19 @@
           <mat-expansion-panel hideToggle *ngFor="let module of modules">
             <mat-expansion-panel-header>
               <mat-panel-title>
-                <span>{{module.name}}</span>
+                <span>{{ module.name }}</span>
               </mat-panel-title>
             </mat-expansion-panel-header>
 
-            <a mat-list-item [routerLink]="'/home'+screen.link" *ngFor="let screen of module.screens">{{screen.name}}</a>
+            <a
+              mat-list-item
+              [routerLink]="'/home' + screen.link"
+              *ngFor="let screen of module.screens"
+              >{{ screen.name }}</a
+            >
           </mat-expansion-panel>
         </mat-accordion>
       </mat-nav-list>
-
-
     </mat-sidenav>
     <router-outlet></router-outlet>
   </mat-sidenav-container>

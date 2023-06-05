@@ -1,13 +1,22 @@
 import {Injectable, Query} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
-import {BasicResponse, User} from "../login/login.service";
+import {BasicResponse, IApp, User} from "../login/login.service";
+
+export interface IField {
+  name: string
+  type: string
+}
 
 export interface ITable {
   name: string
+  app: IApp
+  fields: IField[]
+  actions: IAction[]
 }
 
 export interface IAction {
+  id:number
   name: string
 }
 

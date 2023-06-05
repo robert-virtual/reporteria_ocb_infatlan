@@ -20,12 +20,15 @@ import {MatListModule} from "@angular/material/list";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatExpansionModule} from "@angular/material/expansion";
-import { QueriesComponent } from './queries/queries.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import {QueriesComponent} from './queries/queries.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatChipsModule} from "@angular/material/chips";
 import {MatBadgeModule} from "@angular/material/badge";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import {CreateQueryComponent} from './create-query/create-query.component';
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MAT_DATE_FORMATS, NativeDateModule} from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -33,33 +36,51 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     LoginComponent,
     HomeComponent,
     QueriesComponent,
-    DashboardComponent
+    DashboardComponent,
+    CreateQueryComponent
   ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        AppRoutingModule,
-        MatInputModule,
-        MatButtonModule,
-        MatIconModule,
-        ReactiveFormsModule,
-        HttpClientModule,
-        MatSidenavModule,
-        MatCheckboxModule,
-        FormsModule,
-        MatSnackBarModule,
-        MatToolbarModule,
-        MatListModule,
-        MatProgressSpinnerModule,
-        MatMenuModule,
-        MatExpansionModule,
-        MatGridListModule,
-        MatChipsModule,
-        MatBadgeModule,
-        MatPaginatorModule
-    ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    MatSidenavModule,
+    MatCheckboxModule,
+    FormsModule,
+    MatSnackBarModule,
+    MatToolbarModule,
+    MatListModule,
+    MatProgressSpinnerModule,
+    MatMenuModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatChipsModule,
+    MatBadgeModule,
+    MatPaginatorModule,
+    MatDatepickerModule,
+    NativeDateModule,
+  ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    {
+      provide: MAT_DATE_FORMATS,
+      useValue: {
+        parse: {
+          dateInput: ['l', 'LL'],
+        },
+        display: {
+          dateInput: 'L',
+          monthYearLabel: 'MMM YYYY',
+          dateA11yLabel: 'LL',
+          monthYearA11yLabel: 'MMMM YYYY',
+        },
+      }
+    }
+
   ],
   bootstrap: [AppComponent]
 })
